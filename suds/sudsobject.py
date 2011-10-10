@@ -314,7 +314,7 @@ class Printer:
                 s.append(item[0])
                 s.append('[]')
             else:
-                s.append(item[0])
+                s.append(item[0].decode('utf-8'))
             s.append(' = ')
             s.append(self.process(item[1], h, n, True))
         s.append('\n')
