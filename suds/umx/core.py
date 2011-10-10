@@ -138,7 +138,7 @@ class Core:
         for child in content.node:
             cont = Content(child)
             cval = self.append(cont)
-            key = reserved.get(child.name, child.name)
+            key = reserved.get(child.name, child.name).encode('utf-8')
             if key in content.data:
                 v = getattr(content.data, key)
                 if isinstance(v, list):
