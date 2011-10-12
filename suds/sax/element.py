@@ -788,7 +788,7 @@ class Element:
         for c in self.children:
             result.append(c.plain())
         result.append('</%s>' % self.qname())
-        result = ''.join(result)
+        result = ''.join([(r.decode('utf-8') if isinstance(r, str) else r) for r in result])
         return result
 
     def nsdeclarations(self):

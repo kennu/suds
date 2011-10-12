@@ -82,7 +82,7 @@ class Typed(Core):
             name = content.tag
             if name.startswith('_'):
                 name = '@'+name[1:]
-            content.type = self.resolver.find(name, content.value)
+            content.type = self.resolver.find(name.decode('utf-8'), content.value)
             if content.type is None:
                 raise TypeNotFound(content.tag)
         else:

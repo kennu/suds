@@ -82,7 +82,7 @@ class Builder:
                     md = value.__metadata__
                     md.sxtype = resolved
                     md.ordering = self.ordering(resolved)
-        setattr(data, type.name, value)
+        setattr(data, type.name.encode('utf-8'), value)
         if value is not None:
             data = value
         if not isinstance(data, list):

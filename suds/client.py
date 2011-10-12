@@ -501,6 +501,7 @@ class MethodSelector:
         @return: An I{execution wrapper} for the specified method name.
         @rtype: L{Method}
         """
+        if isinstance(name, str): name = name.decode('utf-8')
         m = self.__methods.get(name)
         if m is None:
             qn = '.'.join((self.__qn, name))
@@ -656,7 +657,7 @@ class SoapClient:
         @rtype: dict
         """
         action = self.method.soap.action
-        stock = { 'Content-Type' : 'text/xml; charset=utf-8', 'SOAPAction': action }
+        stock = { 'Content-Type' : 'text/xml; charset=utf-8', 'SOAPAction': action.encode('utf-8') }
         result = dict(stock, **self.options.headers)
         log.debug('headers = %s', result)
         return result
